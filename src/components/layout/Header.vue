@@ -15,6 +15,7 @@
         <div class="search-cart">
             <input class="search-input" type="text" placeholder="What Are You Looking For ?">
             <i class="fa-solid fa-bag-shopping shopping-cart"></i>
+            <i class="fa-solid fa-user"></i>
         </div>
 
     </header>
@@ -29,7 +30,7 @@ import { RouterLink } from 'vue-router';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2rem 5rem;
+    padding: 2rem 3rem;
 }
 
 .main-header .links {
