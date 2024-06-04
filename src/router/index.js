@@ -1,12 +1,22 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import SignUp from "../views/SignUp.vue";
 
-Vue.use(VueRouter);
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [];
-
-const router = new VueRouter({
-  routes,
-});
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: '/',
+      component: Home,
+      name: 'home'
+    },
+    {
+      path: '/Sign-up',
+      component: SignUp,
+      name: 'sign-up'
+    }
+  ]
+})
 
 export default router

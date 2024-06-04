@@ -76,6 +76,8 @@
     font-size: 14px;
     cursor: pointer;
     text-transform: uppercase;
+    background: white;
+    color: black;
 }
 
 .landing-section .header-buttons .buttons .find-more-btn {

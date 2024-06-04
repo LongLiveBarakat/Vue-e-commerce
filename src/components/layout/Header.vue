@@ -2,10 +2,10 @@
     <header class="main-header">
 
         <div class="links">
-            <RouterLink to="/home">Home</RouterLink>
-            <RouterLink to="/shop">Shop</RouterLink>
-            <RouterLink to="/about-us">Aboute Us</RouterLink>
-            <RouterLink to="/contact-us">Contact Us</RouterLink>
+            <RouterLink class="link" to="/">Home</RouterLink>
+            <RouterLink class="link" to="/shop">Shop</RouterLink>
+            <RouterLink class="link" to="/about-us">Aboute Us</RouterLink>
+            <RouterLink class="link" to="/contact-us">Contact Us</RouterLink>
         </div>
 
         <div class="logo">
@@ -15,7 +15,7 @@
         <div class="search-cart">
             <input class="search-input" type="text" placeholder="What Are You Looking For ?">
             <i class="fa-solid fa-bag-shopping shopping-cart"></i>
-            <i class="fa-solid fa-user"></i>
+            <router-link class="link" to="/Sign-Up"> <i class="fa-solid fa-user"></i> </router-link>
         </div>
 
     </header>
@@ -31,6 +31,8 @@ import { RouterLink } from 'vue-router';
     justify-content: space-between;
     align-items: center;
     padding: 2rem 3rem;
+    background: white;
+    box-shadow: 0px 0px 10px 0px #0000001A;
 }
 
 .main-header .links {
@@ -38,8 +40,10 @@ import { RouterLink } from 'vue-router';
     gap: 1rem;
 }
 
-.main-header .links RouterLink {
+.main-header .links .link {
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 .main-header .search-cart {
@@ -59,5 +63,9 @@ import { RouterLink } from 'vue-router';
 .main-header .search-cart i {
     font-size: 20px;
     cursor: pointer;
+}
+
+.main-header .search-cart .link {
+    color: black;
 }
 </style>
