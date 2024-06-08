@@ -136,7 +136,7 @@ const viewAllProductsSelling = () => {
 .new-arrivals .heading-title {
     margin-bottom: 4rem;
     font-size: 48px;
-    font-family: monospace;
+    font-family: 'Satoshi-Black';
 }
 
 .new-arrivals .products {
