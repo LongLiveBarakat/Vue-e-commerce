@@ -32,6 +32,36 @@
         </div>
         <viewAll @click="viewAllProductsSelling" />
     </div>
+
+    <div class="category">
+        <div class="title">
+            <h1>BROWSE BY DRESS STYLE</h1>
+        </div>
+
+        <div class="images">
+            <div class="casual-formal">
+                <div class="casual">
+                    <p>Casual</p>
+                    <!-- <img src="../assets/images/image 11.png" alt=""> -->
+                </div>
+                <div class="formal">
+                    <p>Formal</p>
+                    <!-- <img src="../assets/images/image 13.png" alt=""> -->
+                </div>
+            </div>
+
+            <div class="party-gym">
+                <div class="party">
+                    <p>Part</p>
+                    <!-- <img src="../assets/images/image 12.png" alt=""> -->
+                </div>
+                <div class="gym">
+                    <p>Gym</p>
+                    <!-- <img src="../assets/images/image 14.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -182,5 +212,103 @@ const viewAllProductsSelling = () => {
 
 .top-selling {
     border-bottom: none;
+    margin: 2rem auto 0 auto;
+}
+
+.category {
+    width: 90%;
+    border-radius: 40px;
+    background: #F0F0F0;
+    margin: 0 auto 2rem auto;
+}
+
+.category .title {
+    text-align: center;
+    padding: 4rem 0 0 0;
+}
+
+.category .title h1 {
+    font-size: 48px;
+    font-family: 'Satoshi-Black';
+}
+
+.category .images {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+}
+
+.category .images .casual-formal {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2%;
+    grid-template-columns: 37% 61%;
+    margin-bottom: 1rem;
+}
+
+.category .images .party-gym {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2%;
+    grid-template-columns: 61% 37%;
+}
+
+.category .images .casual,
+.category .images .formal,
+.category .images .party,
+.category .images .gym {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.category .images .casual:hover,
+.category .images .formal:hover,
+.category .images .party:hover,
+.category .images .gym:hover {
+    transform: scale(1.05);
+}
+
+.category .images .casual p,
+.category .images .formal p,
+.category .images .party p,
+.category .images .gym p {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-family: 'Satoshi-Black';
+    font-size: 18px;
+}
+
+.category .images .casual {
+    background-image: url(/Users/macbookpro/Desktop/working/new-ecommerce/src/assets/images/image-11.png);
+    background-size: cover;
+}
+
+.category .images .formal {
+    background-image: url(/Users/macbookpro/Desktop/working/new-ecommerce/src/assets/images/image-13.png);
+    background-size: cover;
+}
+
+.category .images .party {
+    background-image: url(/Users/macbookpro/Desktop/working/new-ecommerce/src/assets/images/image-12.png);
+    background-size: cover;
+}
+
+.category .images .gym {
+    background-image: url(/Users/macbookpro/Desktop/working/new-ecommerce/src/assets/images/image-14.png);
+    background-size: cover;
+}
+
+.category .images .casual img,
+.category .images .formal img,
+.category .images .party img,
+.category .images .gym img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 </style>
