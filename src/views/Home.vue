@@ -1,11 +1,11 @@
 <template>
     <div class="landing-section">
         <div class="header-buttons">
-            <div class="title">
+            <div data-aos="fade-right" class="title">
                 <h1>Raining Offers For <br> Hot Summer!</h1>
                 <p>70% Off <span class="different-color-p">On All Products</span></p>
             </div>
-            <div class="buttons">
+            <div data-aos="fade-right" class="buttons">
                 <button class="shop-now-btn">Shop Now</button>
                 <button class="find-more-btn">Find More</button>
             </div>
@@ -18,16 +18,16 @@
     </div>
 
     <div class="new-arrivals">
-        <h1 class="heading-title">NEW ARRIVALS</h1>
-        <div class="products">
+        <h1 data-aos="fade-up" class="heading-title">NEW ARRIVALS</h1>
+        <div data-aos="fade-right" class="products">
             <productCart v-for="product in newArrivalProducts" :key="product.id" :product="product" />
         </div>
         <viewAll @click="viewAllProductsArrival" />
     </div>
 
     <div class="top-selling new-arrivals">
-        <h1 class="heading-title">TOP SELLING</h1>
-        <div class="products">
+        <h1 data-aos="fade-up" class="heading-title">TOP SELLING</h1>
+        <div data-aos="fade-left" class="products">
             <productCart v-for="product in topSellingProducts" :key="product.id" :product="product" />
         </div>
         <viewAll @click="viewAllProductsSelling" />
@@ -37,7 +37,6 @@
         <div class="title">
             <h1>BROWSE BY DRESS STYLE</h1>
         </div>
-
         <div class="images">
             <div class="casual-formal">
                 <div class="casual">
@@ -49,10 +48,9 @@
                     <!-- <img src="../assets/images/image 13.png" alt=""> -->
                 </div>
             </div>
-
             <div class="party-gym">
                 <div class="party">
-                    <p>Part</p>
+                    <p>Party</p>
                     <!-- <img src="../assets/images/image 12.png" alt=""> -->
                 </div>
                 <div class="gym">
@@ -62,13 +60,38 @@
             </div>
         </div>
     </div>
+
+    <div class="reviews-title">
+        <h1>OUR HAPPY CUSTOMERS</h1>
+        <div class="arrows">
+            <img src="../assets/images/arrow-left.svg" alt="Left Arrow" />
+            <img src="../assets/images/arrow-right.svg" alt="Right Arrow" />
+        </div>
+    </div>
+
+    <div class="review-boxes">
+        <div v-for="reviewBox in reviewBoxes" :key="reviewBox.id">
+            <reviewBox :reviewBox="reviewBox" />
+        </div>
+    </div>
 </template>
+
 
 <script setup>
 import viewAll from '../components/common/viewAll.vue';
 import productCart from '../components/common/productCart.vue';
+import reviewBox from '../components/common/reviewBox.vue';
 import { faker } from '@faker-js/faker';
-import { ref } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
+import AOS from 'aos';
+import Glide from '@glidejs/glide';
+
+onMounted(() => {
+    nextTick(() => {
+        AOS.refresh();
+    });
+    new Glide('.glide').mount();
+});
 
 const generateProducts = (count) => {
     const products = []
@@ -95,9 +118,61 @@ const viewAllProductsSelling = () => {
     topSellingProducts.value = topSellingProducts.value.concat(generateProducts(10))
 }
 
+/* HANDLING THE CARD SLIDER */
+
+const reviewBoxes = ref([
+    {
+        id: 1,
+        customerName: 'Ahmed',
+        description: 'I am blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I have bought has exceeded my expectations.',
+        starsCount: 4,
+        isVerified: true
+    },
+    {
+        id: 2,
+        customerName: 'Ahmed',
+        description: 'I am blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I have bought has exceeded my expectations.',
+        starsCount: 4,
+        isVerified: true
+    },
+    {
+        id: 3,
+        customerName: 'Ahmed',
+        description: 'I am blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I have bought has exceeded my expectations.',
+        starsCount: 4,
+        isVerified: true
+    },
+    {
+        id: 4,
+        customerName: 'Ahmed',
+        description: 'I am blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I have bought has exceeded my expectations.',
+        starsCount: 4,
+        isVerified: true
+    },
+    {
+        id: 5,
+        customerName: 'Ahmed',
+        description: 'I am blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I have bought has exceeded my expectations.',
+        starsCount: 4,
+        isVerified: true
+    },
+    {
+        id: 6,
+        customerName: 'Ahmed',
+        description: 'I am blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I have bought has exceeded my expectations.',
+        starsCount: 4,
+        isVerified: true
+    },
+])
+
+/* HANDLING THE CARD SLIDER */
 </script>
 
+
 <style scoped>
+@import '@glidejs/glide/dist/css/glide.core.min.css';
+@import '@glidejs/glide/dist/css/glide.theme.min.css';
+
 .landing-section {
     background-image: url(../assets/images/Rectangle.png);
     background-size: cover;
@@ -310,5 +385,37 @@ const viewAllProductsSelling = () => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.reviews-title {
+    width: 90%;
+    margin: 4rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviews-title h1 {
+    font-size: 40px;
+    font-family: 'Satoshi-Black';
+}
+
+.reviews-title .arrows {
+    display: flex;
+    gap: 1rem;
+}
+
+.reviews-title .arrows img {
+    width: 24px;
+    cursor: pointer;
+}
+
+.review-boxes {
+    margin: 2rem 4rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: scroll;
 }
 </style>
